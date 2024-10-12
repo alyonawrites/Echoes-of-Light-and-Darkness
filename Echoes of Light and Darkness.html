@@ -58,33 +58,6 @@ tw-sidebar {
   tw-story { padding: 0px; }
 }
 
-tw-link {
-  display: inline-block;
-  color: #c9c9c9; /* Button text color */
-  font-family: 'Cormorant Garamond', serif; /* Gothic font style */
-  background-color: #1b2647; /* Button background color */
-  border: 2px solid #232b4e; /* Border color */
-  border-radius: 8px; /* Smooth, rounded edges */
-  padding: 10px 20px; /* Space inside the button */
-  margin: 10px 0; /* Space between buttons */
-  min-width: 150px; /* Minimum width for short titles */
-  transition: all 0.3s ease; /* Smooth hover effect */
-  word-wrap: break-word; /* Adapt to long titles */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add some depth with shadow */
-}
-
-tw-link:hover {
-  color: #e1e1e1; /* Lighter text on hover */
-  background-color: #571a35; /* Darker background on hover */
-  border-color: #be6797; /* Brighter border on hover */
-  cursor: pointer;
-}
-
-tw-link:active {
-  box-shadow: none; /* Remove shadow when button is clicked */
-  transform: scale(0.98); /* Small press effect */
-}
-
 tw-story img {
   border: 5px solid #232b4e; /* Gothic-styled dark border */
   border-radius: 20px; /* Rounded corners for a refined look */
@@ -93,72 +66,44 @@ tw-story img {
   width: 100%; /* Ensure images scale well within passages */
 }
 
-.restart-link:hover {
-    color: #e1e1e1; /* Lighter text on hover */
-    background-color: #571a35; /* Darker background on hover */
-    border-color: #232b4e; /* Brighter border on hover */
+/* Button styling */
+tw-link, .tw-button {
+  color: #c9c9c9;
+  background-color: #1b2647;
+  font-weight: bold;
+  font-family: inherit;
+  text-align: left;
+
+  /* Border */
+  border: 2px solid #232b4e;
+  border-radius: 8px;
+  box-shadow: 5px 10px 20px #000C;
+
+  /* Layout and size */
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
 }
 
-.restart-link:active {
-    box-shadow: none; /* Remove shadow when button is clicked */
-    transform: scale(0.98); /* Small press effect */
+/* Button styling on hover */
+tw-link:hover, .tw-button:hover {
+  color: #e1e1e1;
+  border-color: #be6797;
+  background-color: #571a35;
+  cursor: pointer;
 }
 
-/* Style for the button link */
-.button {
-    display: inline-block; /* Make it behave like a block element */
-    color: #c9c9c9; /* Button text color */
-    font-family: 'Cormorant Garamond', serif; /* Gothic font style */
-    background-color: #1b2647; /* Dark button background */
-    border: 2px solid #232b4e; /* Border color */
-    border-radius: 8px; /* Smooth, rounded edges */
-    padding: 10px 20px; /* Space inside the button */
-    margin: 10px 0; /* Space around the button */
-    transition: all 0.3s ease; /* Smooth hover effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add depth with shadow */
-    cursor: pointer; /* Pointer cursor for buttons */
-    text-decoration: none; /* Remove underline from link */
+/* Button styling while pressing */
+tw-link:active, .tw-button:active {
+  box-shadow: none;
+  transform: scale(0.98);
 }
-
-.button:hover {
-    color: #e1e1e1; /* Lighter text on hover */
-    background-color: #571a35; /* Darker background on hover */
-    border-color: #232b4e; /* Brighter border on hover */
-}
-
-.button:active {
-    box-shadow: none; /* Remove shadow when button is clicked */
-    transform: scale(0.98); /* Small press effect */
-}
-
-/* Style for text size buttons */
-.text-size {
-    padding: 5px 7px;
-    background-color: #1e1e1e;
-    color: #c9c9c9;
-    border: 1px solid #5f5f5f;
-    cursor: pointer;
-    margin: 2px;
-    text-transform: uppercase;
-    font-family: 'Cormorant Garamond', serif;
-    transition: background-color 0.3s ease;
-}
-
-.text-size:hover {
-    background-color: #2a2a2a;
-    border-color: #a7a7a7;
-}
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">$(document).on('click', '.text-size', function() {
-    var size = $(this).data('size');
-
-    // Apply different font sizes based on the clicked button
-    if (size === 'small') {
-        $('body').css('font-size', '10px');
-    } else if (size === 'medium') {
-        $('body').css('font-size', '14px');
-    } else if (size === 'large') {
-        $('body').css('font-size', '18px');
-    }
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">$(document).on('click', 'button', function(size) {
+  const fontSize = $(this).data('font-size');
+  if (fontSize !== null) {
+    $('body').css('font-size', fontSize + 'px');
+  }
 });</script><tw-tag name="Конец-1" color="green"></tw-tag><tw-tag name="Конец-2" color="red"></tw-tag><tw-passagedata pid="1" name="Начало" tags="" position="1800,950" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;X&quot;)[
 ### Отголоски Света и Тьмы
 ]
@@ -169,11 +114,10 @@ tw-story img {
 Сыграй в игру, испытай свои силы, а если хочешь испытать и свой разум, тогда следуй в мир книги &quot;И всюду тьма&quot;. Игра — лишь проводник...
 
 [[Шагнуть на путь Света и Тьмы.]]
-
-&lt;button class=&quot;text-size&quot; data-size=&quot;small&quot;&gt;Мелкий шрифт&lt;/button&gt;
-&lt;button class=&quot;text-size&quot; data-size=&quot;medium&quot;&gt;Средний шрифт&lt;/button&gt;
-&lt;button class=&quot;text-size&quot; data-size=&quot;large&quot;&gt;Крупный шрифт&lt;/button&gt;
-</tw-passagedata><tw-passagedata pid="2" name="Конечно! Меня одарили Светом" tags="" position="1825,1075" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;X&quot;)[=
+&lt;hr&gt;&lt;!--There real font sizes are wrong, html is strange--&gt;
+&lt;button data-font-size=&quot;10&quot; style=&quot;font-size: 17px&quot; class=&quot;tw-button&quot;&gt;Мелкий шрифт&lt;/button&gt;
+&lt;button data-font-size=&quot;14&quot; style=&quot;font-size: 21px&quot; class=&quot;tw-button&quot;&gt;Средний шрифт&lt;/button&gt;
+&lt;button data-font-size=&quot;18&quot; style=&quot;font-size: 28px&quot; class=&quot;tw-button&quot;&gt;Крупный шрифт&lt;/button&gt;</tw-passagedata><tw-passagedata pid="2" name="Конечно! Меня одарили Светом" tags="" position="1825,1075" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;X&quot;)[=
 Ты стала Святой, носительницей дара, о котором грезят многие, но он нисходит лишь на благородные и милостивые души. Теперь он живет в тебе, пульсируя под кожей, как обещание безграничных возможностей. Но вот вопрос: что ты будешь с ним делать?
 
 &lt;img src=&quot;https://cdn.midjourney.com/98cb69fd-c9c3-4a4b-8a23-8bef7065e3e6/0_0.png&quot;&gt;
@@ -960,12 +904,9 @@ Cамой тебе не справиться. Без понимания, как 
 [[Я закончила, теперь можно и за платьем отправиться!-&gt;Сначала за платьем.]]</tw-passagedata><tw-passagedata pid="86" name="Что дальше?" tags="" position="2350,2550" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;X&quot;)[=Спасибо за внимание к этой скромной игре! Надеюсь, тебе понравился твой путь в мире книги &quot;И всюду тьма&quot;. Теперь у тебя есть возможность:
 
 &lt;span class=&quot;restart-link&quot;&gt;[[Пройти игру снова, чтобы исследовать другие концовки и узнать все возможные судьбы.-&gt;Начало]]&lt;/span&gt;
-
-&lt;b href=&quot;https://example.com&quot; class=&quot;button&quot;&gt;Прочитать мою книгу, на основе которой создана эта игра. Погрузись в глубину сюжета и раскрой все детали истории, которая ждет тебя на страницах.&lt;/b&gt;
-
+&lt;b href=&quot;https://example.com&quot; class=&quot;tw-button&quot;&gt;Прочитать мою книгу, на основе которой создана эта игра. Погрузись в глубину сюжета и раскрой все детали истории, которая ждет тебя на страницах.&lt;/b&gt;
 [[Посмотреть официальные иллюстрации к книге, созданные талантливыми художниками.]]
-
-&lt;b href=&quot;https://t.me/alyonawrites&quot; class=&quot;button&quot;&gt;Подписаться на мой телеграм-канал, чтобы не пропустить события, связанные с этой историей, а также поучаствовать в розыгрышах, которые переодически будут проходить.&lt;/b&gt;
+&lt;b href=&quot;https://t.me/alyonawrites&quot; class=&quot;tw-button&quot;&gt;Подписаться на мой телеграм-канал, чтобы не пропустить события, связанные с этой историей, а также поучаствовать в розыгрышах, которые переодически будут проходить.&lt;/b&gt;
 
 Если книга уже прочитана, я буду рада услышать твое мнение! Оставь отзыв, чтобы помочь другим читателям открыть для себя этот мир.
 
