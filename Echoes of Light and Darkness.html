@@ -28,7 +28,7 @@ body {
 
 tw-story { 
   background-color: #0000;
-  padding: 20px 10px;
+  padding: 10px 10px;
 }
 
 tw-passage {
@@ -41,11 +41,19 @@ tw-passage {
   border-radius: 10px; /* Corner radius */
 
   max-width: 800px;
-  margin: 20px auto;
+  margin: 2% auto;
 }
 
 tw-sidebar {
   display: none;
+}
+
+@media (max-width: 600px) {
+  tw-passage { 
+    border: none; 
+    margin: 0px;
+  }
+  tw-story { padding: 0px; }
 }
 
 tw-link {
