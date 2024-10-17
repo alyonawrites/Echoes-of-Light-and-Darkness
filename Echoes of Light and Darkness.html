@@ -93,20 +93,25 @@ tw-link, .tw-button {
   transition: all 0.3s ease;
 }
 
-/* Button styling on hover */
-tw-link:hover, .tw-button:hover {
-  color: #e1e1e1;
+/* Button styling while pressing */
+tw-link:active, .tw-button:active {
+  box-shadow: none;
+  transform: scale(0.98);
+  
   border-color: #be6797;
   background-color: #571a35;
   cursor: pointer;
 }
 
-/* Button styling while pressing */
-tw-link:active, .tw-button:active {
-  box-shadow: none;
-  transform: scale(0.98);
-}
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">$(document).on('click', 'button', function() {
+/* Hover event on platforms that support hover */
+@media (hover: hover) {
+  tw-link:hover, .tw-button:hover {
+    color: #e1e1e1;
+    border-color: #be6797;
+    background-color: #571a35;
+    cursor: pointer;
+  }
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">$(document).on('click', 'button', function() {
   const fontSize = $(this).data('font-size');
   if (fontSize) {
     $('body').css('font-size', fontSize + 'px');
