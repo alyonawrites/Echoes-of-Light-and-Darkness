@@ -106,12 +106,21 @@ tw-link:active, .tw-button:active {
   box-shadow: none;
   transform: scale(0.98);
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">$(document).on('click', 'button', function(size) {
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">$(document).on('click', 'button', function() {
   const fontSize = $(this).data('font-size');
-  if (fontSize !== null) {
+  if (fontSize) {
+    $('body').css('font-size', fontSize + 'px');
+    localStorage.setItem('font-size', fontSize);
+  }
+});
+
+$(document).ready(function() {
+  const fontSize = localStorage.getItem('font-size')
+  if (fontSize) {
     $('body').css('font-size', fontSize + 'px');
   }
-});</script><tw-tag name="Конец-1" color="green"></tw-tag><tw-tag name="Конец-2" color="red"></tw-tag><tw-passagedata pid="1" name="Начало" tags="" position="1800,950" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;X&quot;)[
+});
+</script><tw-tag name="Конец-1" color="green"></tw-tag><tw-tag name="Конец-2" color="red"></tw-tag><tw-passagedata pid="1" name="Начало" tags="" position="1800,950" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;X&quot;)[
 ### Отголоски Света и Тьмы
 ]
 Ты вступаешь в мир, где Свет и Тьма — не просто символы, а силы, подаренные богами. 
